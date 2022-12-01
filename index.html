@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="index.css" type="text/css" >
+    </head>
+
+    <body>
+
+        <div class="container">
+          <div class="top">
+            <div class="upper section"><img class="img img2" src="TWO.jpeg"></div>
+            <div class="mid section"><div class="top-title">WELCOME TO <br>HUIYE's WEB</div>
+            
+            </div>
+          </div>
+          
+          <div class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="#">WORKS</a>
+            <a href="#">CONTACT</a>
+            <a href="#" class="right">WELCOME TO MYWEB</a>
+          </div>
+          
+          <div class="row">
+            <div class="side">
+              <h2>About Me</h2>
+              <div class="fakeimgOne" style="height:200px;"><img src="cooper.jpg"></div>
+              <p>Hi There. My name is <span style="color:red">Huiye Wang</span>. I graduated from University of Birmingham majoring in Artificial Intellience and Computer Science.</p>
+              <h3>More Info</h3>
+              <div class="fakeimgside" style="height:auto"><h1>Education</h1><br> <span style="color: white;">University of Birmingham(2019-2022)</span> <br>Degree: <span style="color: white;">Bachelor degree</span><br></div><br>
+              <div class="fakeimgside" style="height:auto"><h1>Experience</h1> <br> Work experience: <span style="color: white;">2021 internship at Shanghai Mdt Tech ltd</span><br>position: <span style="color:white;">intern product Operation</span></div><br>
+              <div class="fakeimgside" style="height:auto"><h1>Academic experience</h1> <br>-Video game UI <br>-Android application</div>
+            </div>
+
+            <div class="main">
+              <h2>My Works</h2>
+
+              <div class="fakeimg" >
+              <img class="mywork" src="workone.jpeg" width="100%">
+              <img class="myworktwo" src="worktwo.jpeg" width="100%">
+              </div>
+
+              <p>Travel website:</p>
+              <p>In the page, background will change while broswers are sliding the pic.And code of this page is uplaod to the github at <a href="http://hxw844.github.io/travel/#" target="_blank">http://hxw844.github.io/travel/#.</a></p>
+              <br>
+              
+            </div>
+          </div>
+          
+          <div class="footer">
+            <p>Author: Huiye Wang</p>
+            <p>Email: hxw844@126.com, Phone:+447529132339</p>
+          </div>
+
+          <script>
+           const image2 = document.querySelector('.img2')
+           const topTitle = document.querySelector('.top-title')
+
+const mutate = (pct) => {
+  image2.style.setProperty('--moveY', (1 - pct) * 5);
+  image2.style.setProperty('--scale', 1.25 - pct / 4);
+  image2.style.setProperty('--opacity', pct);
+  topTitle.style.setProperty('--moveY', `${(1 - pct) * (1 - pct) * 80}vh`);
+  topTitle.style.setProperty('--scale', `${(pct / 2 + .5)}`);
+};
+
+let last_known_scroll_position = 0;
+let ticking = false;
+
+function doSomething(scroll_pos) {
+  // Do something with the scroll position
+  mutate(1 - scroll_pos / window.innerHeight);
+}
+
+window.addEventListener('scroll', function(e) {
+  last_known_scroll_position = window.scrollY;
+
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      doSomething(last_known_scroll_position);
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+          </script>
+    </body>
+</html>
